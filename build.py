@@ -78,7 +78,7 @@ if test_name.find('.') == -1:
     test_name += '.*'
 
 run_cmake(src_dir=direction,
-          build_dir='build_cpp',
-          exe_name='demos_cpp',
+          build_dir=os.path.join('build', args.direction),
+          exe_name='demos_'+args.direction,
           cmake_args=cmake_args,
           exe_args='--gtest_filter='+test_name)
