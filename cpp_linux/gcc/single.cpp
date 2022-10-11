@@ -40,11 +40,11 @@ void sighandler(int signum) {
     exit(1);
 }
 
-// TEST(single, example) {
-//     signal(SIGINT, sighandler);
+int main() {
+    signal(SIGINT, sighandler);
 
-//     while (1) {
-//         printf("sleep for a second...\n");
-//         sleep(1);
-//     }
-// }
+    while (1) {
+        printf("sleep for a second...\n");
+        sleep(1);
+    }
+}
