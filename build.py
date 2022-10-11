@@ -9,7 +9,8 @@ import os
 parser = argparse.ArgumentParser(description='编译并运行项目')
 parser.add_argument('-d', '--direction', required=True,
                     help='specify a source directory.')
-parser.add_argument('-t', '--test_name', default='*', help='test case to run')
+parser.add_argument('-t', '--test_name', default='*.*',
+                    help='test case to run')
 parser.add_argument('--mingw', action='store_true')
 parser.add_argument('--clean', action='store_true')
 
@@ -72,6 +73,9 @@ if mingw:
     cmake_args = "-G \"MinGW Makefiles\""
 else:
     cmake_args = ''
+
+if test_name.find('.') == -1:
+    test_name += '.*'
 
 run_cmake(src_dir=direction,
           build_dir='build_cpp',

@@ -1,4 +1,7 @@
 #pragma once
+#include <algorithm>
+#include <cstddef>
+
 // 排序算法 https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95
 
 /***
@@ -103,12 +106,17 @@ void shell_sort(const RanIt first, const RanIt last, Pr pred) {
  */
 template <class RanIt, class Pr>
 void merge_sort(const RanIt first, const RanIt last, Pr pred) {
+    using value_type = typename RanIt::value_type;
+    using pointer = typename RanIt::pointer;
+
     if (first >= last)
         return;
 
+    pointer first_ptr = &(*first);
+
     size_t len = last - first;
-    auto a = first._Ptr;
-    auto b = new RanIt::value_type[len];
+    auto a = first_ptr;
+    auto b = new value_type[len];
     for (size_t seg = 1; seg < len; seg += seg) {
         for (size_t start = 0; start < len; start += seg + seg) {
             size_t low = start, mid = std::min(start + seg, len),
@@ -125,7 +133,7 @@ void merge_sort(const RanIt first, const RanIt last, Pr pred) {
         }
         std::swap(a, b);
     }
-    if (a != first._Ptr) {
+    if (a != first_ptr) {
         for (size_t i = 0; i < len; i++)
             b[i] = a[i];
         b = a;
@@ -214,7 +222,7 @@ void heap_sort(const RanIt first, const RanIt last, Pr pred) {
     };
 
     // 初始化，i从最后一个父节点开始调整
-    int len = int(last - first); // TODO: size_t
+    int len = int(last - first);   // TODO: size_t
     for (int i = len / 2 - 1; i >= 0; i--)
         max_heapify(first + i, first + (len - 1));
     // 先将第一个元素和已经排好的元素前一位做交换，再从新调整(刚调整的元素之前的元素)，直到排序完毕
