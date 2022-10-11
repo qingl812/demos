@@ -1,0 +1,41 @@
+---
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+BasedOnStyle: LLVM
+Language: Cpp
+# 缩进宽度
+IndentWidth: 4
+BreakBeforeBraces: Custom
+# 指针对齐
+PointerAlignment: Left
+BraceWrapping:
+  AfterClass: true
+  AfterStruct: true
+  AfterEnum: true
+  AfterUnion: true
+  AfterNamespace: true
+  AfterExternBlock: true
+  BeforeElse: true
+# 允许短的 if 语句在同一行
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: true
+# 访问说明符(public、private等)的偏移
+AccessModifierOffset: -4
+# 只合并空函数。int f() {} 可以放在一行。
+AllowShortFunctionsOnASingleLine: Empty
+# 如果为真，则始终在多行字符串文字之前中断。
+AlwaysBreakBeforeMultilineStrings: true
+# 总是在template声明后换行
+AlwaysBreakTemplateDeclarations: true
+# 如果函数定义或声明被包装在类型之后，则缩进。
+# true:
+# LoooooooooooooooooooooooooooooooooooooooongReturnType
+#     LoooooooooooooooooooooooooooooooongFunctionDeclaration();
+IndentWrappedFunctionNames: true
+# 注释 // 前面的空格数量
+SpacesBeforeTrailingComments: 3
+# 把过长的一行注释拆分成多行 
+ReflowComments: false
+# 在 namespace 的结尾添加注释，如 } // namespace a
+FixNamespaceComments: true
+---
+
