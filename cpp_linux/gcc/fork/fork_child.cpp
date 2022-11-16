@@ -1,6 +1,6 @@
 /**
  * @brief pid_t fork()
- * ./second_parent.cpp
+ * see ./second_parent.cpp
  */
 #include <iostream>
 #include <sys/wait.h>
